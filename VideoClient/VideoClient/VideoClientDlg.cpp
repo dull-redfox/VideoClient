@@ -86,3 +86,7 @@ HCURSOR CVideoClientDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+void text()
+{
+
+}
