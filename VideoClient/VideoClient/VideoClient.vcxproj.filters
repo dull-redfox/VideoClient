@@ -54,6 +54,9 @@
     <None Include="res\VideoClient.rc2">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="VideoClient.uml">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\VideoClient.ico">
