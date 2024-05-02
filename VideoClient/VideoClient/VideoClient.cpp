@@ -105,3 +105,5 @@ BOOL CVideoClientApp::InitInstance()
 	return FALSE;
 }
 
+
+
