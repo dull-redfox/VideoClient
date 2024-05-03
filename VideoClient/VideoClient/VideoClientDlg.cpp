@@ -8,6 +8,7 @@
 #include "VideoClientDlg.h"
 #include "afxdialogex.h"
 #include"vlc.h"
+#include"VideoClientController.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -23,6 +24,7 @@ CVideoClientDlg::CVideoClientDlg(CWnd* pParent /*=nullptr*/)
 {
 	m_status = false;
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_length = 0.0f;
 }
 
 void CVideoClientDlg::DoDataExchange(CDataExchange* pDX)
@@ -62,10 +64,14 @@ BOOL CVideoClientDlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 	SetTimer(0, 500, NULL);
-	m_pos.SetRange(0, 100);
+	m_pos.SetRange(0, 1);
 	m_volume.SetRange(0, 100);
 	SetDlgItemText(IDC_STATIC_VOLUME, _T("100%"));
 	SetDlgItemText(IDC_STATIC_VOLUME, _T("--:--:--:/--"));
+	m_controller->SetWnd(m_video.GetSafeHwnd());
+
+	m_url.SetWindowText(_T("file:///E:\\动漫.mp4"));//TODO播放视频名称
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -109,10 +115,19 @@ HCURSOR CVideoClientDlg::OnQueryDragIcon()
 void CVideoClientDlg::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	if (nIDEvent == 0) {
+	if (nIDEvent == 0) {//更新播放时间
 		//控制层，获取播放状态，进度信息
-		//IDC_STATIC_VOLUME更新这个音量
-		//IDC_STATIC_TIME更新播放时间
+		float pos=m_controller->VideoCtrl(EVLC_GET_POSITION);
+		if (pos != -1.0f) {
+			if(m_length<=0.0f) m_length = m_controller->VideoCtrl(EVLC_GET_LENGTH);
+			if (m_pos.GetRangeMax() <= 1) {
+				m_pos.SetRange(0, int(m_length));
+			}
+			CString strPos;
+			strPos.Format(_T("%f/%f"), pos* m_length, m_length);
+			SetDlgItemText(IDC_STATIC_TIME, strPos);
+			m_pos.SetPos(int(length*pos));
+		}
 	}
 	CDialogEx::OnTimer(nIDEvent);
 }
@@ -148,14 +163,18 @@ void CVideoClientDlg::OnEnChangeEdit2()
 void CVideoClientDlg::OnBnClickedBtnPlay()
 {
 	if (m_status == false) {
+		CString url;
+		m_url.GetWindowText(url);
+		//TODO:判断一下当前是否位恢复
+		m_controller->SetMedia(m_controller->Unicode2Utf8((LPCTSTR)url));
 		m_btnPlay.SetWindowText(_T("暂停"));
 		m_status = true;
-		//TODO:Controller的播放接口
+		m_controller->VideoCtrl(EVLC_PLAY);
 	}
 	else {
 		m_btnPlay.SetWindowText(_T("播放"));
 		m_status = false;
-		//TODO:Controller的暂停接口
+		m_controller->VideoCtrl(EVLC_PAUSE);
 	}
 	// TODO: 在此添加控件通知处理程序代码
 }
@@ -165,7 +184,7 @@ void CVideoClientDlg::OnBnClickedBtnStop()
 {
 	m_btnPlay.SetWindowText(_T("播放"));
 	m_status = false;
-	//TODO:控制层停止接口
+	m_controller->VideoCtrl(EVLC_STOP);
 }
 
 
@@ -178,7 +197,6 @@ void CVideoClientDlg::OnTRBNThumbPosChangingSliderPos(NMHDR* pNMHDR, LRESULT* pR
 	TRACE("pos %d reason %d\r\n",pNMTPC->dwPos,pNMTPC->nReason);
 	*pResult = 0;
 }
-
 
 
 void CVideoClientDlg::OnTRBNThumbPosChangingSliderVolume(NMHDR* pNMHDR, LRESULT* pResult)
@@ -200,6 +218,7 @@ void CVideoClientDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		CString strPosition;
 		strPosition.Format(_T("%d%%"), nPos);
 		SetDlgItemText(IDC_STATIC_TIME, strPosition);
+		m_controller->SetPosition(float(nPos)/m_length);
 	}
 	CDialogEx::OnHScroll(nSBCode, nPos, pScrollBar);
 }
@@ -213,6 +232,7 @@ void CVideoClientDlg::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 		CString strVolume;
 		strVolume.Format(_T("%d%%"), 100 - nPos);
 		SetDlgItemText(IDC_STATIC_VOLUME, strVolume);
+		m_controller->SetVolume(100 - nPos);
 	}
 	CDialogEx::OnVScroll(nSBCode, nPos, pScrollBar);
 }

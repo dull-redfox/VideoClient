@@ -25,7 +25,7 @@
 <XPD:OBJ name="OwnedViews[0]" type="UMLClassView" guid="sRDbmcQe5UacCpEQqeSxWAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">40</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">56</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">136</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">178</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">238</XPD:ATTR>
@@ -87,10 +87,10 @@
 <XPD:OBJ name="OwnedViews[2]" type="UMLClassView" guid="WYh0Y7I1wECx/Tp6BlGeXQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">616</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">180</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">167</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">121</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">540</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">204</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">190</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">134</XPD:ATTR>
 <XPD:REF name="Model">kzm1ha6vVkuUuz2CUcwSgQAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="z/GJFx3JO0SYqg6tUb1vCwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="Fn7eZNtJXkuYpuvwqVpibQAA">
@@ -177,7 +177,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">320,257;217,257</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">320,257;233,257</XPD:ATTR>
 <XPD:REF name="Model">boZtdzpqk02d/yTRUJSIKgAA</XPD:REF>
 <XPD:REF name="Head">sRDbmcQe5UacCpEQqeSxWAAA</XPD:REF>
 <XPD:REF name="Tail">ov5Zl7Y9DkOjLyVzIrkPRgAA</XPD:REF>
@@ -204,7 +204,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">468,254;616,254</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">468,254;540,254</XPD:ATTR>
 <XPD:REF name="Model">nidxhf20JEqvMcBNU7j/UwAA</XPD:REF>
 <XPD:REF name="Head">WYh0Y7I1wECx/Tp6BlGeXQAA</XPD:REF>
 <XPD:REF name="Tail">ov5Zl7Y9DkOjLyVzIrkPRgAA</XPD:REF>
@@ -232,6 +232,10 @@
 <XPD:ATTR name="#OwnedElements" type="integer">8</XPD:ATTR>
 <XPD:OBJ name="OwnedElements[0]" type="UMLClass" guid="kzm1ha6vVkuUuz2CUcwSgQAA">
 <XPD:ATTR name="Name" type="string">CVideoClientDlg</XPD:ATTR>
+<XPD:ATTR name="Documentation" type="string">类图的顺序
+1先确定类
+2在确定接口
+3最后确定关系（类与类）</XPD:ATTR>
 <XPD:REF name="Namespace">tEop28dX1E697x3CIj/5GwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">WYh0Y7I1wECx/Tp6BlGeXQAA</XPD:REF>
@@ -299,6 +303,12 @@
 </XPD:OBJ>
 <XPD:ATTR name="#TypedFeatures" type="integer">1</XPD:ATTR>
 <XPD:REF name="TypedFeatures[0]">WSUKiGwPbE6Gfcl/WxUB7gAA</XPD:REF>
+<XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="VOaM3/cZzECXIT4h42I/1AAA">
+<XPD:ATTR name="Name" type="string">m_controller</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">VideoClientController*</XPD:ATTR>
+<XPD:REF name="Owner">kzm1ha6vVkuUuz2CUcwSgQAA</XPD:REF>
+</XPD:OBJ>
 <XPD:ATTR name="#Instances" type="integer">2</XPD:ATTR>
 <XPD:REF name="Instances[0]">ppBgMusN90eF/J45+0q0JQAA</XPD:REF>
 <XPD:REF name="Instances[1]">ZE/8PsLpqkqStXfwxW6tnQAA</XPD:REF>

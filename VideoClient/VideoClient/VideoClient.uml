@@ -579,8 +579,13 @@
 <XPD:OBJ name="Operations[8]" type="UMLOperation" guid="CqrAaoHEvUyBHczbVy0NWgAA">
 <XPD:ATTR name="Name" type="string">SetVolume</XPD:ATTR>
 <XPD:REF name="Owner">ducTeSEH70iQYh6r6fDetQAA</XPD:REF>
-<XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
-<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="+Vl95COAEUanN5hEHQii/QAA">
+<XPD:ATTR name="#Parameters" type="integer">2</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="tKsPg6E+m0mrrK7LF+3sIAAA">
+<XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">int</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">CqrAaoHEvUyBHczbVy0NWgAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Parameters[1]" type="UMLParameter" guid="LpYgwVyp6UO9mzASb8Gx2AAA">
 <XPD:ATTR name="Name" type="string">volume</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">int</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">CqrAaoHEvUyBHczbVy0NWgAA</XPD:REF>
